@@ -1,5 +1,7 @@
 #include "../DSM.hh"
 #include "DSMAlgo_EM201_2013.hh"
+#include <algorithm>
+#include "bits.hh"
 
 int DSMAlgo_EM201_2013::ajpBarrel(DSM& dsm, int offset) const
 {
