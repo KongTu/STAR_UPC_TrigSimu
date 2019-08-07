@@ -1,7 +1,7 @@
 void RunTriggerSimu(
 //int nevents = 10,
 //data test file:
-const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco/reco/dAu200_production_2016/ReversedFullField/P17ib/2016/136/17136038/st_upc_17136038_raw_4000004.MuDst.root"
+const char* indir = "data.list"
 //embedding test file:
 //const char* indir = "/gpfs01/star/pwg/ztu/STARlight/starsim/output/slight16dAu_zerobias_incohVM_100k_Emb_v6/0004/out/output.MuDst.root"			 
 )
