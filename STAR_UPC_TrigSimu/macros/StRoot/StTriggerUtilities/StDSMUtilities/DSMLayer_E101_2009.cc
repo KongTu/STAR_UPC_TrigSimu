@@ -45,6 +45,8 @@ void DSMLayer_E101_2009::run()
 }
 void DSMLayer_E101_2009::run(int runnumber)
 {
+   run();
+  /*
   int yrs =  2000 + runnumber/1000000 - 1;
   printf("E101: yrs = %d\n", yrs);
   if(yrs == 2009 || yrs == 2011 || yrs == 2012 || (yrs == 2013 && runnumber < 14081067))
@@ -58,5 +60,5 @@ void DSMLayer_E101_2009::run(int runnumber)
       DSMAlgo_EE101_2013()((*this)[0]); // EE101
       DSMAlgo_EE102_2013()((*this)[1]); // EE102
     }
-      
+    */  
 }

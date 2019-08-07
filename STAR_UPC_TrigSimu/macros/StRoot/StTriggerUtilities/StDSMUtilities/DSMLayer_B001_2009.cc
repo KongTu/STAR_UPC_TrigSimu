@@ -136,6 +136,8 @@ void DSMLayer_B001_2009::run()
 
 void DSMLayer_B001_2009::run(int runnumber)
 {
+  run();
+/*
   int yrs = 2000 + runnumber/1000000 - 1;
   printf("B001: yrs = %d\n", yrs);
   int dsm = 0;
@@ -183,4 +185,5 @@ void DSMLayer_B001_2009::run(int runnumber)
 	DSMAlgo_BE001_2013()((*this)[dsm++]); // BE005/BE010/BE015
       }
     }
+  */
 }

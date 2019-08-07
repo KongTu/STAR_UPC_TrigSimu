@@ -173,7 +173,7 @@ Int_t StTriggerSimuMaker::InitRun(int runNumber) {
 
   if (mMCflag == 1 || mMCflag == 2) {
     MYSQL mysql;
-    const char* host = "dbbak.starp.bnl.gov";
+    const char* host = "db04.star.bnl.gov";
     const char* user = "";
     const char* pass = "";
     unsigned int port = 3400+GetDBTime().GetYear()%100-1;

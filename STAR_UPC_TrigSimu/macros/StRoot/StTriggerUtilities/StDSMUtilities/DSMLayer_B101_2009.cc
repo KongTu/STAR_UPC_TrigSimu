@@ -41,6 +41,8 @@ void DSMLayer_B101_2009::run()
 }
 void DSMLayer_B101_2009::run(int runnumber)
 {
+  run();
+/*
   int yrs = 2000 + runnumber/1000000 - 1;
   printf("B101: yrs = %d\n", yrs);
   if(yrs == 2009 || yrs == 2010 || yrs == 2011 || yrs == 2012 || (yrs == 2013 && runnumber < 14081067))
@@ -52,4 +54,5 @@ void DSMLayer_B101_2009::run(int runnumber)
       printf("B101: 2013 DSM Algorithm...\n");
       for_each(begin(), end(), DSMAlgo_BC101_2013());
     }     
+*/
 }

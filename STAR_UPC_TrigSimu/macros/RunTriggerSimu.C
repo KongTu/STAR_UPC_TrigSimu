@@ -1,4 +1,5 @@
-void RunTriggerSimu(int nevents = 100,
+void RunTriggerSimu(
+//int nevents = 10,
 //data test file:
 const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco/reco/dAu200_production_2016/ReversedFullField/P17ib/2016/136/17136038/st_upc_17136038_raw_4000004.MuDst.root"
 //embedding test file:
@@ -19,8 +20,8 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
   gSystem->Load("StEEmcUtil");
   gSystem->Load("StEEmcDbMaker");
   gSystem->Load("StEmcTriggerMaker");
-  gSystem->Load("StTriggerUtilities");  
-  //gSystem->Load(".sl73_gcc485/lib/libStTriggerUtilities.so");
+  //gSystem->Load("StTriggerUtilities");  
+  gSystem->Load(".sl73_gcc485/lib/libStTriggerUtilities.so");
   gSystem->Load("StTriggerFilterMaker");
   
    StChain *chain = new StChain;
@@ -38,14 +39,14 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
    StEmcADCtoEMaker* adc = new StEmcADCtoEMaker;
    adc->saveAllStEvent(true);
 
-   StTriggerSimuMaker* simuTrig = new StTriggerSimuMaker;
+   StTriggerSimuMaker* simuTrig = new StTriggerSimuMaker("StarTrigSimu");
    //use online or offline option
    //simuTrig->useOnlineDB();
    simuTrig->useOfflineDB();
    simuTrig->setMC(0);
 
    //bbc is not used in run12 analysis
-   simuTrig->useBbc();
+   //simuTrig->useBbc();
    simuTrig->useBemc();
    simuTrig->useEemc();
    //use online or offline bemc tower pedestals and statuses
@@ -64,6 +65,9 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
    //simuTrig->setEndcapHighTowerTh(0, 25);
    // Run
    chain->Init();
+   TFile *fout = new TFile("out.root", "recreate");
+   TH1F *hh = new TH1F("http", "; fired", 2, 0, 2);
+   TH1F *hj = new TH1F("http2", "; fired", 2, 0, 2);
    int nEvents = muDstMaker->chain()->GetEntries();
    cout << "number of events ~ " << nEvents << endl;
    for(int iEvent = 0; iEvent < nEvents; iEvent++)
@@ -73,8 +77,11 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
        if(status == kStSkip) continue;
        if(status % 10 == kStEOF || status % 10 == kStFatal) break;
        std::cout<<"trigger simulator: UPC-Jpsi fired = "<< simuTrig->isTrigger(530703) <<endl;
-       std::cout<<"trigger simulator: UPC-Jpsi fired = "<< simuTrig->isTrigger(530701) <<endl;
-       std::cout<<"trigger simulator: UPC-Jpsi fired = "<< simuTrig->isTrigger(530702) <<endl;
+       bool fire = simuTrig->emc->BJP2();
+       hh->Fill(fire);
+       hj->Fill(simuTrig->isTrigger(530703));
      }
    //chain->EventLoop(nevents);
+   fout->Write();
+   fout->Close();
 }
