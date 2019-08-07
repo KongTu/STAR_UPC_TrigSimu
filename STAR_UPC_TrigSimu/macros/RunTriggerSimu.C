@@ -70,6 +70,9 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
    TH1F *hj = new TH1F("http2", "; fired", 2, 0, 2);
    int nEvents = muDstMaker->chain()->GetEntries();
    cout << "number of events ~ " << nEvents << endl;
+
+   StMuEvent *mMuEvent = muDstMaker->event();
+   
    for(int iEvent = 0; iEvent < nEvents; iEvent++)
      {
        chain->Clear();
@@ -80,6 +83,9 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
        bool fire = simuTrig->emc->BJP2();
        hh->Fill(fire);
        hj->Fill(simuTrig->isTrigger(530703));
+     
+       
+       std::cout<<"data trigger: UPC-Jpsi fired = " << mMuEvent->triggerIdCollection().nominal().isTrigger(530703) << std::endl;
      }
    //chain->EventLoop(nevents);
    fout->Write();
