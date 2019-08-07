@@ -68,7 +68,9 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
    TFile *fout = new TFile("out.root", "recreate");
    TH1F *hh = new TH1F("http", "; fired", 2, 0, 2);
    TH1F *hj = new TH1F("http2", "; fired", 2, 0, 2);
-   TH2D *h2d = new TH2D("h2d","h2d",2,0,2,2,0,2);
+   TH2D *h2d703 = new TH2D("h2d703",";data;mc",2,0,2,2,0,2);
+   TH2D *h2d702 = new TH2D("h2d702",";data;mc",2,0,2,2,0,2);
+   TH2D *h2d701 = new TH2D("h2d701",";data;mc",2,0,2,2,0,2);
    int nEvents = muDstMaker->chain()->GetEntries();
    cout << "number of events ~ " << nEvents << endl;
    StMuDst *mMuDst;
@@ -89,8 +91,17 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
        StMuEvent *mMuEvent = mMuDst->event();
        int datafire = (int) mMuEvent->triggerIdCollection().nominal().isTrigger(530703);
        std::cout<<"data trigger: UPC-Jpsi fired = " << datafire << std::endl;
-     
-       h2d->Fill( datafire, mcfire );
+       h2d703->Fill( datafire, mcfire );
+
+       mcfire = (int) simuTrig->isTrigger(530702);
+       datafire = (int) mMuEvent->triggerIdCollection().nominal().isTrigger(530702);
+       h2d702->Fill( datafire, mcfire );
+
+       mcfire = (int) simuTrig->isTrigger(530701);
+       datafire = (int) mMuEvent->triggerIdCollection().nominal().isTrigger(530701);
+       h2d701->Fill( datafire, mcfire );
+
+
      }
    //chain->EventLoop(nevents);
    fout->Write();
