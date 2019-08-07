@@ -82,7 +82,7 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
        int status = chain->Make(iEvent);
        if(status == kStSkip) continue;
        if(status % 10 == kStEOF || status % 10 == kStFatal) break;
-       std::cout<<"trigger simulator: UPC-Jpsi fired = "<< simuTrig->isTrigger(530703) <<endl;
+       // std::cout<<"trigger simulator: UPC-Jpsi fired = "<< simuTrig->isTrigger(530703) <<endl;
        bool fire = simuTrig->emc->BJP2();
        int mcfire = (int) simuTrig->isTrigger(530703);
        hh->Fill(fire);
@@ -90,7 +90,7 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
      
        StMuEvent *mMuEvent = mMuDst->event();
        int datafire = (int) mMuEvent->triggerIdCollection().nominal().isTrigger(530703);
-       std::cout<<"data trigger: UPC-Jpsi fired = " << datafire << std::endl;
+       // std::cout<<"data trigger: UPC-Jpsi fired = " << datafire << std::endl;
        h2d703->Fill( datafire, mcfire );
 
        mcfire = (int) simuTrig->isTrigger(530702);
@@ -101,6 +101,7 @@ const char* indir = "root://xrdstar.rcf.bnl.gov:1095//home/starlib/home/starreco
        datafire = (int) mMuEvent->triggerIdCollection().nominal().isTrigger(530701);
        h2d701->Fill( datafire, mcfire );
 
+       std::cout << "#Events ~ " << iEvent << std::endl;
 
      }
    //chain->EventLoop(nevents);
