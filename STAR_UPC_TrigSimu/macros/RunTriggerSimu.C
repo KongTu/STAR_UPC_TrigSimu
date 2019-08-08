@@ -95,7 +95,11 @@ const char* indir = "data.list"
 
        if( datafire == 1 && mcfire == 0 ){
 
-          cout << "isTrigger defined: " << simuTrig->isTriggerDefined( 530703 );
+          std::cout << "only data fires, isTrigger defined: " << simuTrig->isTriggerDefined( 530703 ) << std::endl;
+       }
+       if( datafire == 1 && mcfire == 1 ){
+
+          std::cout << "both triggers fire, isTrigger defined: " << simuTrig->isTriggerDefined( 530703 ) << std::endl;
        }
 
        mcfire = (int) simuTrig->isTrigger(530702);
