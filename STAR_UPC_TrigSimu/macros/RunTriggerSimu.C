@@ -41,8 +41,8 @@ const char* indir = "data.list"
 
    StTriggerSimuMaker* simuTrig = new StTriggerSimuMaker("StarTrigSimu");
    //use online or offline option
-   //simuTrig->useOnlineDB();
-   simuTrig->useOfflineDB();
+   simuTrig->useOnlineDB();
+   // simuTrig->useOfflineDB();
    simuTrig->setMC(0);
 
    //bbc is not used in run12 analysis
