@@ -47,9 +47,8 @@ const char* indir = "data.list"
 
    //bbc is not used in run12 analysis
    //simuTrig->useBbc();
-   // simuTrig->useBemc();
-   // simuTrig->useEemc();
-   simuTrig->useEmc();
+   simuTrig->useBemc();
+   simuTrig->useEemc();
    //use online or offline bemc tower pedestals and statuses
    simuTrig->bemc->setConfig(StBemcTriggerSimu::kOnline);
    //simuTrig->bemc->setConfig(StBemcTriggerSimu::kOnline);
