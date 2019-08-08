@@ -50,7 +50,7 @@ const char* indir = "data.list"
    simuTrig->useBemc();
    simuTrig->useEemc();
    //use online or offline bemc tower pedestals and statuses
-   simuTrig->bemc->setConfig(StBemcTriggerSimu::kOffline);
+   simuTrig->bemc->setConfig(StBemcTriggerSimu::kOnline);
    //simuTrig->bemc->setConfig(StBemcTriggerSimu::kOnline);
    //define triggers with trigger index, trigger name, offline Id, onbits, offbits, onbits1, onbits2, onbits3, offbits1, offbits2, offbits3
    //this method need to be called only when the trigger definitions in online and offline are not correct
