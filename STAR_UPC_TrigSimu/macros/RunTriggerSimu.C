@@ -93,6 +93,11 @@ const char* indir = "data.list"
        // std::cout<<"data trigger: UPC-Jpsi fired = " << datafire << std::endl;
        h2d703->Fill( datafire, mcfire );
 
+       if( datafire == 1 && mcfire == 0 ){
+
+          cout << "isTrigger defined: " << simuTrig->isTriggerDefined( 530703 );
+       }
+
        mcfire = (int) simuTrig->isTrigger(530702);
        datafire = (int) mMuEvent->triggerIdCollection().nominal().isTrigger(530702);
        h2d702->Fill( datafire, mcfire );
