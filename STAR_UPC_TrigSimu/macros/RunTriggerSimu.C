@@ -68,9 +68,9 @@ const char* indir = "data.list"
    TFile *fout = new TFile("out.root", "recreate");
    TH1F *hh = new TH1F("http", "; fired", 2, 0, 2);
    TH1F *hj = new TH1F("http2", "; fired", 2, 0, 2);
-   TH2D *h2d703 = new TH2D("h2d703",";data;mc",2,0,2,2,0,2);
-   TH2D *h2d702 = new TH2D("h2d702",";data;mc",2,0,2,2,0,2);
-   TH2D *h2d701 = new TH2D("h2d701",";data;mc",2,0,2,2,0,2);
+   TH2D *h2d703 = new TH2D("h2d703",";data;mc",3,0,3,3,0,3);
+   TH2D *h2d702 = new TH2D("h2d702",";data;mc",3,0,3,3,0,3);
+   TH2D *h2d701 = new TH2D("h2d701",";data;mc",3,0,3,3,0,3);
    int nEvents = muDstMaker->chain()->GetEntries();
    cout << "number of events ~ " << nEvents << endl;
    StMuDst *mMuDst;
